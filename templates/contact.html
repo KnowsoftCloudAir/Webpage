@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Contact — Knowsoft Consult LTD{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="container">
+    <h1>Contact us</h1>
+    <p class="lead mb-0 opacity-90">Consulting enquiries, demos and partnership requests.</p>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <h3 class="fw-bold">Let’s talk</h3>
+        <p class="text-muted">Describe your project or the software you need. A Knowsoft consultant will follow up.</p>
+        <ul class="list-unstyled">
+          <li class="mb-3"><i class="bi bi-envelope-fill text-teal me-2" style="color:var(--ks-teal)"></i> consult@knowsoft.example</li>
+          <li class="mb-3"><i class="bi bi-briefcase-fill me-2" style="color:var(--ks-teal)"></i> Systems, finance workflow, training</li>
+          <li class="mb-3"><i class="bi bi-clock-fill me-2" style="color:var(--ks-teal)"></i> Typical response within 1–2 business days</li>
+        </ul>
+      </div>
+      <div class="col-lg-7">
+        <div class="card-ks p-4 p-md-5">
+          <form method="post">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Full name *</label>
+                <input type="text" name="name" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Work email *</label>
+                <input type="email" name="email" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Organisation</label>
+                <input type="text" name="organization" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Interest</label>
+                <select name="service" class="form-select">
+                  <option value="Consulting">Consulting engagement</option>
+                  <option value="Software demo">Software demo</option>
+                  <option value="Templates">Templates / tooling</option>
+                  <option value="Training">Training</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">How can we help? *</label>
+                <textarea name="message" class="form-control" rows="5" required placeholder="Objectives, timeline, constraints…"></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-ks btn-lg">Send message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

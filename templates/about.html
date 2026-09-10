@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}About — Knowsoft Consult LTD{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="container">
+    <h1>About Knowsoft Consult LTD</h1>
+    <p class="lead mb-0 opacity-90">Building practical software and advisory services — with ease.</p>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <img src="{{ url_for('static', filename='img/knowsoft_logo.png') }}" alt="Knowsoft" class="img-fluid rounded-4 shadow-sm bg-dark p-4" style="max-height:280px">
+      </div>
+      <div class="col-lg-6">
+        <h2 class="fw-bold">Who we are</h2>
+        <p>Knowsoft Consult LTD is a technology and management consulting firm. We help organisations digitise operations, strengthen financial control and deploy software that teams actually use.</p>
+        <p>Our portfolio spans financial workflow platforms, membership and institutional systems, e-procurement and tailored implementation programmes.</p>
+        <ul class="list-unstyled">
+          <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Product design &amp; deployment</li>
+          <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Process &amp; controls advisory</li>
+          <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Training and change support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

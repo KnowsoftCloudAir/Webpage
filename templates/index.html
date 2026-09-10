@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Knowsoft Consult LTD — Software & Consulting with ease{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container py-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-badge"><i class="bi bi-stars me-1"></i> Knowsoft Consult LTD</div>
+        <h1>Technology &amp; consulting that work <span>with ease</span></h1>
+        <p class="lead">We design and deliver software platforms, financial workflows and advisory services for organisations that need clarity, control and results.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="{{ url_for('software') }}" class="btn btn-ks btn-lg">Download software</a>
+          <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg rounded-pill px-4">Request consulting</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/{{ youtube_id }}?rel=0&modestbranding=1"
+            title="Knowsoft Consult LTD advert"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+        </div>
+        <p class="small text-white-50 mt-2 mb-0 text-center">
+          <i class="bi bi-youtube me-1"></i> Official promo — replace video ID on Render with your YouTube link
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">What we offer</h2>
+    <p class="section-sub">End-to-end digital products and professional services under one trusted brand.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card-ks p-4">
+          <div class="icon-box"><i class="bi bi-pc-display"></i></div>
+          <h5 class="fw-bold">Software products</h5>
+          <p class="text-muted small">Web and desktop solutions for finance, inventory, membership and procurement — ready to deploy.</p>
+          <a href="{{ url_for('software') }}">Browse software →</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-ks p-4">
+          <div class="icon-box"><i class="bi bi-file-earmark-richtext"></i></div>
+          <h5 class="fw-bold">Standard templates</h5>
+          <p class="text-muted small">Budget, expense, variance, proposal and PMO templates your teams can adopt immediately.</p>
+          <a href="{{ url_for('templates_page') }}">Get templates →</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-ks p-4">
+          <div class="icon-box"><i class="bi bi-people"></i></div>
+          <h5 class="fw-bold">Consulting</h5>
+          <p class="text-muted small">Process design, implementation, training and retained advisory for public and private clients.</p>
+          <a href="{{ url_for('contact') }}">Contact us →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+      <div>
+        <h2 class="section-title mb-1">Featured software</h2>
+        <p class="section-sub mb-0">Launch online or install the Windows package.</p>
+      </div>
+      <a href="{{ url_for('software') }}" class="btn btn-ks-outline">View all</a>
+    </div>
+    <div class="row g-4">
+      {% for s in software %}
+      <div class="col-md-4">
+        <div class="card-ks p-4">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="icon-box"><i class="bi {{ s.icon }}"></i></div>
+            <span class="badge-ks">{{ s.badge }}</span>
+          </div>
+          <h5 class="fw-bold">{{ s.name }}</h5>
+          <p class="text-muted small">{{ s.tagline }}</p>
+          <p class="small mb-3"><i class="bi bi-cpu me-1"></i>{{ s.platform }} · v{{ s.version }}</p>
+          <div class="d-flex flex-wrap gap-2">
+            {% if s.url and s.url != '#' %}
+            <a class="btn btn-ks btn-sm" href="{{ s.url }}" target="_blank" rel="noopener">Open app</a>
+            {% endif %}
+            {% if s.download and s.download != '#' %}
+            <a class="btn btn-ks-outline btn-sm" href="{{ s.download }}">Download</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta-band text-center text-lg-start">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-2">Need a consulting engagement?</h2>
+          <p class="mb-0 opacity-90">Tell us about your workflow, compliance or digital transformation goals. Knowsoft Consult LTD will respond with a clear next step.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+          <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg rounded-pill px-4 fw-semibold text-teal">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Software — Knowsoft Consult LTD{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="container">
+    <h1>Software</h1>
+    <p class="lead mb-0 opacity-90">Download installers or launch cloud deployments.</p>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="soft-grid">
+      {% for s in items %}
+      <div class="card-ks p-4">
+        <div class="d-flex justify-content-between">
+          <div class="icon-box"><i class="bi {{ s.icon }}"></i></div>
+          <span class="badge-ks">{{ s.badge }}</span>
+        </div>
+        <h4 class="fw-bold">{{ s.name }}</h4>
+        <p class="text-muted">{{ s.tagline }}</p>
+        <p class="small"><strong>Platform:</strong> {{ s.platform }} · <strong>Version:</strong> {{ s.version }}</p>
+        <div class="d-flex flex-wrap gap-2 mt-3">
+          {% if s.url and s.url != '#' %}
+          <a class="btn btn-ks" href="{{ s.url }}" target="_blank" rel="noopener">Launch online</a>
+          {% endif %}
+          {% if s.download and s.download != '#' %}
+          <a class="btn btn-ks-outline" href="{{ s.download }}">Download package</a>
+          {% else %}
+          <a class="btn btn-ks-outline" href="{{ url_for('contact') }}">Request access</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="alert alert-light border mt-5">
+      <i class="bi bi-info-circle me-1"></i>
+      Host download files in <code>static/downloads/</code> on GitHub or link to external release assets. Update product cards in <code>app.py</code>.
+    </div>
+  </div>
+</section>
+{% endblock %}
