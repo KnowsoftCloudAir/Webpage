@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Clients — Knowsoft Consult LTD{% endblock %}
+{% block content %}
+<div class="page-hero"><div class="container"><h1>Our clients</h1><p class="lead mb-0 opacity-90">Organisations we are proud to support</p></div></div>
+<section><div class="container">
+<div class="row g-4">
+{% for c in clients %}
+<div class="col-md-6 col-lg-3">
+  <div class="card-ks p-4 text-center h-100">
+    <div class="icon-box mx-auto"><i class="bi bi-building"></i></div>
+    <h6 class="fw-bold mb-1">{{ c.name }}</h6>
+    <span class="small text-muted">{{ c.sector }}</span>
+  </div>
+</div>
+{% else %}
+<p class="text-muted">Client list will be published here.</p>
+{% endfor %}
+</div>
+</div></section>
+{% endblock %}

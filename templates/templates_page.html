@@ -1,41 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Templates — Knowsoft Consult LTD{% endblock %}
 {% block content %}
-<div class="page-hero">
-  <div class="container">
-    <h1>Standard templates</h1>
-    <p class="lead mb-0 opacity-90">Finance, PMO and consulting templates ready to download.</p>
-  </div>
-</div>
-<section>
-  <div class="container">
-    <div class="table-responsive card-ks">
-      <table class="table table-hover mb-0 align-middle">
-        <thead class="table-light">
-          <tr>
-            <th>Template</th>
-            <th>Category</th>
-            <th>Format</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for t in items %}
-          <tr>
-            <td class="fw-semibold">{{ t.name }}</td>
-            <td><span class="badge text-bg-light border">{{ t.category }}</span></td>
-            <td class="small text-muted">{{ t.format }}</td>
-            <td class="text-end">
-              <a class="btn btn-sm btn-ks" href="{{ url_for('download_file', filename=t.file) }}">
-                <i class="bi bi-download"></i> Download
-              </a>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    <p class="small text-muted mt-3">Replace placeholder files in <code>static/downloads/</code> with your official Excel/Word/PDF templates.</p>
-  </div>
-</section>
+<div class="page-hero"><div class="container"><h1>Standard templates</h1></div></div>
+<section><div class="container">
+<div class="table-responsive card-ks"><table class="table table-hover mb-0 align-middle">
+<thead class="table-light"><tr><th>Template</th><th>Category</th><th>Format</th><th></th></tr></thead>
+<tbody>
+{% for t in items %}
+<tr>
+  <td class="fw-semibold">{{ t.name }}</td>
+  <td>{{ t.category }}</td>
+  <td class="small text-muted">{{ t.format }}</td>
+  <td class="text-end">{% if t.file %}<a class="btn btn-sm btn-ks" href="{{ url_for('download_file', filename=t.file) }}"><i class="bi bi-download"></i></a>{% endif %}</td>
+</tr>
+{% endfor %}
+</tbody></table></div>
+</div></section>
 {% endblock %}

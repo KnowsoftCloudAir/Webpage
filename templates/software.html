@@ -1,41 +1,33 @@
 {% extends "base.html" %}
 {% block title %}Software — Knowsoft Consult LTD{% endblock %}
 {% block content %}
-<div class="page-hero">
-  <div class="container">
-    <h1>Software</h1>
-    <p class="lead mb-0 opacity-90">Download installers or launch cloud deployments.</p>
+<div class="page-hero"><div class="container"><h1>Software</h1><p class="lead mb-0 opacity-90">Products with demos and video walkthroughs</p></div></div>
+<section><div class="container"><div class="soft-grid">
+{% for s in items %}
+<div class="card-ks p-4">
+  <div class="d-flex justify-content-between"><div class="icon-box"><i class="bi {{ s.icon }}"></i></div>{% if s.badge %}<span class="badge-ks">{{ s.badge }}</span>{% endif %}</div>
+  <h4 class="fw-bold">{{ s.name }}</h4>
+  <p class="text-muted">{{ s.tagline }}</p>
+  <p class="small">{{ s.platform }} · v{{ s.version }}</p>
+  {% if s.video_url %}
+  <div class="mb-3 rounded-3 overflow-hidden border" style="aspect-ratio:16/9;background:#000">
+    {% set vid = s.video_url %}
+    {% if 'youtube.com' in vid or 'youtu.be' in vid %}
+      {% if 'v=' in vid %}{% set yid = vid.split('v=')[1].split('&')[0] %}
+      {% elif 'youtu.be/' in vid %}{% set yid = vid.split('youtu.be/')[1].split('?')[0] %}
+      {% else %}{% set yid = vid %}{% endif %}
+      <iframe src="https://www.youtube.com/embed/{{ yid }}?rel=0" class="w-100 h-100" style="min-height:180px;border:0" allowfullscreen loading="lazy" title="{{ s.name }}"></iframe>
+    {% else %}
+      <video class="w-100 h-100" style="min-height:180px;object-fit:cover" controls src="{{ vid }}"></video>
+    {% endif %}
+  </div>
+  {% endif %}
+  <div class="d-flex flex-wrap gap-2">
+    {% if s.url %}<a class="btn btn-ks" href="{{ s.url }}" target="_blank" rel="noopener">Launch</a>{% endif %}
+    {% if s.download %}<a class="btn btn-ks-outline" href="{{ s.download }}">Download</a>{% endif %}
+    {% if not s.url and not s.download %}<a class="btn btn-ks-outline" href="{{ url_for('request_consulting') }}">Request access</a>{% endif %}
   </div>
 </div>
-<section>
-  <div class="container">
-    <div class="soft-grid">
-      {% for s in items %}
-      <div class="card-ks p-4">
-        <div class="d-flex justify-content-between">
-          <div class="icon-box"><i class="bi {{ s.icon }}"></i></div>
-          <span class="badge-ks">{{ s.badge }}</span>
-        </div>
-        <h4 class="fw-bold">{{ s.name }}</h4>
-        <p class="text-muted">{{ s.tagline }}</p>
-        <p class="small"><strong>Platform:</strong> {{ s.platform }} · <strong>Version:</strong> {{ s.version }}</p>
-        <div class="d-flex flex-wrap gap-2 mt-3">
-          {% if s.url and s.url != '#' %}
-          <a class="btn btn-ks" href="{{ s.url }}" target="_blank" rel="noopener">Launch online</a>
-          {% endif %}
-          {% if s.download and s.download != '#' %}
-          <a class="btn btn-ks-outline" href="{{ s.download }}">Download package</a>
-          {% else %}
-          <a class="btn btn-ks-outline" href="{{ url_for('contact') }}">Request access</a>
-          {% endif %}
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    <div class="alert alert-light border mt-5">
-      <i class="bi bi-info-circle me-1"></i>
-      Host download files in <code>static/downloads/</code> on GitHub or link to external release assets. Update product cards in <code>app.py</code>.
-    </div>
-  </div>
-</section>
+{% endfor %}
+</div></div></section>
 {% endblock %}

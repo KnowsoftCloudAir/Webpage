@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Request consulting — Knowsoft Consult LTD{% endblock %}
+{% block content %}
+<div class="page-hero"><div class="container"><h1>Request consulting</h1><p class="lead mb-0 opacity-90">Tell us about your needs — we will respond promptly</p></div></div>
+<section><div class="container"><div class="row justify-content-center"><div class="col-lg-8">
+<div class="card-ks p-4 p-md-5">
+<form method="post">
+  <div class="row g-3">
+    <div class="col-md-6"><label class="form-label">Full name *</label><input name="name" class="form-control" required></div>
+    <div class="col-md-6"><label class="form-label">Email *</label><input type="email" name="email" class="form-control" required></div>
+    <div class="col-md-6"><label class="form-label">Phone</label><input name="phone" class="form-control" placeholder="+234..."></div>
+    <div class="col-md-6"><label class="form-label">Organisation</label><input name="organization" class="form-control"></div>
+    <div class="col-12">
+      <label class="form-label">Service interest</label>
+      <select name="service" class="form-select">
+        <option value="">— Select —</option>
+        {% for s in services %}<option value="{{ s.title }}">{{ s.title }}</option>{% endfor %}
+        <option value="Software">Software / ERP</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="col-12"><label class="form-label">Describe your need *</label><textarea name="message" class="form-control" rows="5" required></textarea></div>
+    <div class="col-12"><button class="btn btn-ks btn-lg">Submit request</button></div>
+  </div>
+</form>
+</div>
+</div></div></div></section>
+{% endblock %}

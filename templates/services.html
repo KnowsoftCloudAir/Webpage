@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Services — Knowsoft Consult LTD{% endblock %}
+{% block content %}
+<div class="page-hero"><div class="container"><h1>Consulting services</h1><p class="lead mb-0 opacity-90">Specialist support across finance, assurance and operations</p></div></div>
+<section><div class="container">
+<div class="row g-4">
+{% for s in services %}
+<div class="col-md-6 col-lg-4">
+  <a href="{{ url_for('service_detail', slug=s.slug) }}" class="text-decoration-none text-dark">
+    <div class="card-ks p-4 h-100">
+      <div class="icon-box"><i class="bi {{ s.icon }}"></i></div>
+      <h5 class="fw-bold">{{ s.title }}</h5>
+      <p class="text-muted small mb-0">{{ s.summary }}</p>
+    </div>
+  </a>
+</div>
+{% endfor %}
+</div>
+<div class="text-center mt-5">
+  <a href="{{ url_for('request_consulting') }}" class="btn btn-ks btn-lg">Request consulting</a>
+</div>
+</div></section>
+{% endblock %}

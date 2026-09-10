@@ -1,29 +1,15 @@
 {% extends "base.html" %}
 {% block title %}About — Knowsoft Consult LTD{% endblock %}
 {% block content %}
-<div class="page-hero">
-  <div class="container">
-    <h1>About Knowsoft Consult LTD</h1>
-    <p class="lead mb-0 opacity-90">Building practical software and advisory services — with ease.</p>
+<div class="page-hero"><div class="container"><h1>About us</h1><p class="lead mb-0 opacity-90">Knowsoft Consult LTD · {{ content.address }}</p></div></div>
+<section><div class="container"><div class="row g-5 align-items-center">
+  <div class="col-lg-5"><img src="{{ url_for('static', filename='img/knowsoft_logo.png') }}" class="img-fluid rounded-4 bg-dark p-4" alt="Knowsoft" style="max-height:260px"></div>
+  <div class="col-lg-7">
+    <h2 class="fw-bold">Who we are</h2>
+    <p>Knowsoft Consult LTD provides software solutions and professional consulting in financial management, office systems, audit support, reporting and capacity building.</p>
+    <p>We serve public institutions, development programmes, community organisations and private enterprises from our base in <strong>{{ content.address }}</strong>.</p>
+    <p class="mb-1"><i class="bi bi-envelope me-2"></i><a href="mailto:{{ content.email }}">{{ content.email }}</a></p>
+    <p><i class="bi bi-telephone me-2"></i><a href="tel:{{ content.phone }}">{{ content.phone }}</a></p>
   </div>
-</div>
-<section>
-  <div class="container">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-6">
-        <img src="{{ url_for('static', filename='img/knowsoft_logo.png') }}" alt="Knowsoft" class="img-fluid rounded-4 shadow-sm bg-dark p-4" style="max-height:280px">
-      </div>
-      <div class="col-lg-6">
-        <h2 class="fw-bold">Who we are</h2>
-        <p>Knowsoft Consult LTD is a technology and management consulting firm. We help organisations digitise operations, strengthen financial control and deploy software that teams actually use.</p>
-        <p>Our portfolio spans financial workflow platforms, membership and institutional systems, e-procurement and tailored implementation programmes.</p>
-        <ul class="list-unstyled">
-          <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Product design &amp; deployment</li>
-          <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Process &amp; controls advisory</li>
-          <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Training and change support</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+</div></div></section>
 {% endblock %}
